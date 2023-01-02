@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text(
             title,
-            // style: theme.textTheme.headline1,
+            style: Theme.of(context).textTheme.headline1,
           ),
         actions: const [NotificationIcon(), SizedBox(width: 25)],
         elevation: 0.0,

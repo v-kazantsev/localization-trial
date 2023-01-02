@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
 import 'screens/home_screen.dart';
+import 'app_theme.dart';
 
 /// The Widget that configures your application.
 class LocalizationTrial extends StatelessWidget {
@@ -24,8 +24,8 @@ class LocalizationTrial extends StatelessWidget {
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           onGenerateTitle: (BuildContext context) =>
-              AppLocalizations.of(context)!.appTitle,
-          theme: ThemeData(),
+              AppLocalizations.of(context).appTitle,
+          theme: AppTheme.light(),
           darkTheme: ThemeData.dark(),
           themeMode: settingsController.themeMode,
           onGenerateRoute: (RouteSettings routeSettings) {
