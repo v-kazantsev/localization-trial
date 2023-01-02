@@ -1,0 +1,6 @@
+{
+  "appTitle": "localization_trial",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
