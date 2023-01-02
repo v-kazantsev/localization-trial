@@ -1,0 +1,54 @@
+{
+  "appTitle": "localization_trial",
+  "@appTitle": {
+    "description": "Название приложения"
+  },
+  "myCodes": "Мои коды",
+  "@myCodes": {
+    "description": "Заголовок страницы Мои коды"
+  },
+  "settings": "Настройки",
+  "@settings": {
+    "description": "Заголовок страницы Настройки"
+  },
+  "profile": "Профиль",
+  "@profile": {
+    "description": "Заголовок страницы Профиль"
+  },
+  "myCar": "Моя машина",
+  "@myCar": {
+    "description": "Кнопка Моя машина"
+  },
+  "myChild": "Мой ребенок",
+  "@myChild": {
+    "description": "Кнопка Мой ребенок"
+  },
+  "myWallet": "Мой кошелек",
+  "@myWallet": {
+    "description": "Кнопка Мой кошелек"
+  },
+  "myPhone": "Мой телефон",
+  "@myPhone": {
+    "description": "Кнопка Мой телефон"
+  },
+  "myHome": "Моя квартира",
+  "@myHome": {
+    "description": "Кнопка Моя квартира"
+  },
+  "allCodes": "Все коды",
+  "@allCodes": {
+    "description": "Пункт меню Все коды"
+  },
+  "favorites": "Избранное",
+  "@favorites": {
+    "description": "Пункт меню Избранное"
+  },
+  "car": "Машина",
+  "@car": {
+    "description": "Пункт меню Машина"
+  },
+  "add": "Добавить",
+  "@add": {
+    "description": "Пункт меню добавить"
+  }
+}

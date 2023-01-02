@@ -3,6 +3,7 @@ import '../app_colors.dart';
 import '../components/notification_icon.dart';
 import '../screens/screens.dart';
 import '../components/navigation_bar_item.dart';
+import '../localization/app_localization_context.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -53,16 +54,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icons.settings,
                 onPressed: () => setState(() {
                   pageIndex = 0;
-                  title = 'Настройки';
+                  title = context.loc.settings;
                 }),
               ),
               NavBarItem(
                 isSelected: pageIndex == 1,
                 icon: Icons.qr_code,
-                label: 'Мои коды',
+                label: context.loc.myCodes,
                 onPressed: () => setState(() {
                   pageIndex = 1;
-                  title = 'Мои коды';
+                  title = context.loc.myCodes;
                 }),
               ),
               NavBarItem(
@@ -70,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icons.person,
                 onPressed: () => setState(() {
                   pageIndex = 2;
-                  title = 'Кабинет';
+                  title = context.loc.profile;
                 }),
               ),
             ],

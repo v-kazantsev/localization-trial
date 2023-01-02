@@ -21,15 +21,8 @@ class LocalizationTrial extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return MaterialApp(
           restorationScopeId: 'app',
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('en', ''), 
-          ],
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           onGenerateTitle: (BuildContext context) =>
               AppLocalizations.of(context)!.appTitle,
           theme: ThemeData(),
