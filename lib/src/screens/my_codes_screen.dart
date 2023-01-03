@@ -1,4 +1,7 @@
+import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../components/menu_item.dart';
 import '../components/codes_screen_item.dart';
 import '../localization/app_localization_context.dart';
@@ -12,9 +15,31 @@ class Page2 extends StatefulWidget {
 
 class _Page2State extends State<Page2> {
   int selectedIndex = 0;
+  bool isLoading = true;
+  List<dynamic> itemsList = [];
+
+  Future<void> readJson() async {
+    final String response = await rootBundle.loadString('assets/data/mockData.json');
+    final data = await json.decode(response);
+    Timer(const Duration(seconds: 2), () {
+      setState(() {
+        itemsList = data;
+        isLoading = false;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    readJson();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return isLoading
+    ? const Center(child:CircularProgressIndicator())
+    : Column(
       children: [
         Expanded(
           flex: 1,
@@ -55,27 +80,27 @@ class _Page2State extends State<Page2> {
             child: Column(
               children: [
                 CodesScreenItem(
-                  label: context.loc.myCar,
+                  label: itemsList[0]['title'],
                   color: const Color(0x334385F6),
                   iconColor: const Color(0xFF4D8EFF),
                 ),
                 CodesScreenItem(
-                  label: context.loc.myChild,
+                  label: itemsList[1]['title'],
                   color: const Color(0x33CDC1FF),
                   iconColor: const Color(0xFFCDC1FF),
                 ),
                 CodesScreenItem(
-                  label: context.loc.myHome,
+                  label: itemsList[2]['title'],
                   color: const Color(0xFFE4F9E4),
                   iconColor: const Color(0xFF7AE582),
                 ),
                 CodesScreenItem(
-                  label: context.loc.myWallet,
+                  label: itemsList[3]['title'],
                   color: const Color(0x3371BBFF),
                   iconColor: const Color(0xFF81CCF2),
                 ),
                 CodesScreenItem(
-                  label: context.loc.myPhone,
+                  label: itemsList[4]['title'],
                   color: const Color(0x3377EDD9),
                   iconColor: const Color(0xFF77EDD9),
                 ),
