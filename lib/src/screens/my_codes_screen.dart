@@ -1,14 +1,14 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../components/menu_item.dart';
 import '../components/codes_screen_item.dart';
 import '../localization/app_localization_context.dart';
 import '../models/codes_model.dart';
+import '../api/network_manager.dart';
 
 class Page2 extends StatefulWidget {
   const Page2({super.key});
+
 
   @override
   State<Page2> createState() => _Page2State();
@@ -19,21 +19,14 @@ class _Page2State extends State<Page2> {
   bool isLoading = true;
   late List<CodesModel> itemsList = [];
 
-  Future<void> readJson() async {
-    final String response = await rootBundle.loadString('assets/data/mockData.json');
-    Iterable data = await json.decode(response);
-    Timer(const Duration(seconds: 2), () {
-      setState(() {
-        itemsList = data.map((item) => CodesModel.fromJson(item)).toList();
-        isLoading = false;
-      });
-    });
-  }
-
   @override
   void initState() {
     super.initState();
-    readJson();
+    NetworkManager.readJson()
+    .then((items) => Timer(const Duration(seconds: 2), () => setState(() {
+      itemsList = items;
+      isLoading = false;
+    })));
   }
 
   @override
