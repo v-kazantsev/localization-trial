@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import '../components/menu_item.dart';
 import '../components/codes_screen_item.dart';
 import '../localization/app_localization_context.dart';
+import '../models/codes_model.dart';
 
 class Page2 extends StatefulWidget {
   const Page2({super.key});
@@ -16,14 +17,14 @@ class Page2 extends StatefulWidget {
 class _Page2State extends State<Page2> {
   int selectedIndex = 0;
   bool isLoading = true;
-  List<dynamic> itemsList = [];
+  late List<CodesModel> itemsList = [];
 
   Future<void> readJson() async {
     final String response = await rootBundle.loadString('assets/data/mockData.json');
-    final data = await json.decode(response);
+    Iterable data = await json.decode(response);
     Timer(const Duration(seconds: 2), () {
       setState(() {
-        itemsList = data;
+        itemsList = data.map((item) => CodesModel.fromJson(item)).toList();
         isLoading = false;
       });
     });
@@ -80,27 +81,27 @@ class _Page2State extends State<Page2> {
             child: Column(
               children: [
                 CodesScreenItem(
-                  label: itemsList[0]['title'],
+                  label: itemsList[0].title!,
                   color: const Color(0x334385F6),
                   iconColor: const Color(0xFF4D8EFF),
                 ),
                 CodesScreenItem(
-                  label: itemsList[1]['title'],
+                  label: itemsList[1].title!,
                   color: const Color(0x33CDC1FF),
                   iconColor: const Color(0xFFCDC1FF),
                 ),
                 CodesScreenItem(
-                  label: itemsList[2]['title'],
+                  label: itemsList[2].title!,
                   color: const Color(0xFFE4F9E4),
                   iconColor: const Color(0xFF7AE582),
                 ),
                 CodesScreenItem(
-                  label: itemsList[3]['title'],
+                  label: itemsList[3].title!,
                   color: const Color(0x3371BBFF),
                   iconColor: const Color(0xFF81CCF2),
                 ),
                 CodesScreenItem(
-                  label: itemsList[4]['title'],
+                  label: itemsList[4].title!,
                   color: const Color(0x3377EDD9),
                   iconColor: const Color(0xFF77EDD9),
                 ),
